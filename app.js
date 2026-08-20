@@ -177,15 +177,19 @@ var io = new IntersectionObserver(function (entries) {
       var prev = el._ratio || 0;
       var cur = entry.intersectionRatio;
       if (cur > prev) {
+        clearTimeout(el._outT);
         el.classList.remove('out');
         el.classList.add('in');
       } else if (cur < prev) {
-        el.classList.add('out');
-        el.classList.remove('in');
+        clearTimeout(el._outT);
+        el._outT = setTimeout(function () {
+          el.classList.add('out');
+          el.classList.remove('in');
+        }, 250);
       }
       el._ratio = cur;
     });
-  }, { threshold: [0.14, 0.5] });
+  }, { threshold: [0.14, 0.5, 0.8] });
   reveals.forEach(function (el) { io.observe(el); });
 
   /* ---------------- count-up stats ---------------- */
