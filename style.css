@@ -472,6 +472,7 @@ html[data-cursor='light'] .cursor-ring.is-hover {
   will-change: opacity, transform;
 }
 .reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.out { transition-delay: 0s; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }

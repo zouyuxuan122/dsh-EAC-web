@@ -171,14 +171,21 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
   reveals.forEach(function (el) {
     if (el.dataset.delay) el.style.setProperty('--d', el.dataset.delay);
   });
-  var io = new IntersectionObserver(function (entries) {
+var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
+      var el = entry.target;
+      var prev = el._ratio || 0;
+      var cur = entry.intersectionRatio;
+      if (cur > prev) {
+        el.classList.remove('out');
+        el.classList.add('in');
+      } else if (cur < prev) {
+        el.classList.add('out');
+        el.classList.remove('in');
       }
+      el._ratio = cur;
     });
-  }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: [0.14, 0.5] });
   reveals.forEach(function (el) { io.observe(el); });
 
   /* ---------------- count-up stats ---------------- */
