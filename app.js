@@ -51,15 +51,24 @@ var DATA = {
 
   /* ---------------- loader ---------------- */
 
-  var loader = document.getElementById('loader');
+var loader = document.getElementById('loader');
   var loaderFill = document.querySelector('.loader-fill');
   var loaded = false;
+  var loaderDone = false;
+
+  function applyCustomCursor() {
+    if (cursorMoved && loaderDone) {
+      document.documentElement.classList.add('custom-cursor');
+    }
+  }
 
   function finishLoader() {
     if (loaded) return;
     loaded = true;
+    loaderDone = true;
     loader.classList.add('done');
     document.body.style.overflow = '';
+    applyCustomCursor();
   }
 
   window.addEventListener('load', function () {
@@ -86,7 +95,6 @@ var DATA = {
   var ringX = -100, ringY = -100;
 
 if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
-    document.documentElement.classList.add('custom-cursor');
     var cursorMoved = false;
     document.addEventListener('mousemove', function (e) {
       cursorMoved = true;
@@ -94,6 +102,7 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
       mouseY = e.clientY;
       dot.style.left = mouseX + 'px';
       dot.style.top = mouseY + 'px';
+      applyCustomCursor();
     });
 
     (function tickRing() {
@@ -103,10 +112,6 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
       ring.style.top = ringY + 'px';
       requestAnimationFrame(tickRing);
     })();
-
-    setTimeout(function () {
-      if (!cursorMoved) document.documentElement.classList.remove('custom-cursor');
-    }, 1500);
 
     var hoverables = 'a, button, .card, .feature, .contributor, .btn';
     document.addEventListener('mouseover', function (e) {
