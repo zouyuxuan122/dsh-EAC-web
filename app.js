@@ -5,9 +5,9 @@
 
   /* ---------------- data ---------------- */
 
-  var DATA = {
+var DATA = {
     repo: 'https://github.com/zouyuxuan122/Deepseek-Harness-EAC',
-    stars: 1019,
+    stars: 1024,
     starHistory: [
       { d: '08-14', s: 1 },
       { d: '08-15', s: 210 },
@@ -16,7 +16,7 @@
       { d: '08-18', s: 834 },
       { d: '08-19', s: 927 },
       { d: '08-20', s: 998 },
-      { d: '08-21', s: 1019, live: true }
+      { d: '08-21', s: 1024, live: true }
     ],
     contributors: [
       { login: 'zouyuxuan122', n: 35, avatar: 'https://avatars.githubusercontent.com/u/245557608?v=4' },
@@ -561,9 +561,14 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
   'use strict';
   var KEY = 'eacStarSeries_v1';
   var KNOWN_KEY = 'eacKnownStats_v1';
-  var REPO = 'zouyuxuan122/Deepseek-Harness-EAC';
+var REPO = 'zouyuxuan122/Deepseek-Harness-EAC';
   var POLL_MS = 60000;
-  var DEFAULT_SERIES = [
+  var API_BASE = [
+    'https://api.github.com',
+    'https://ghfast.top/https://api.github.com',
+    'https://gh-proxy.com/https://api.github.com'
+  ];
+var DEFAULT_SERIES = [
     { d: '08-14', s: 1 },
     { d: '08-15', s: 210 },
     { d: '08-16', s: 487 },
@@ -571,7 +576,7 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
     { d: '08-18', s: 834 },
     { d: '08-19', s: 927 },
     { d: '08-20', s: 998 },
-    { d: '08-21', s: 1019, live: true }
+    { d: '08-21', s: 1024, live: true }
   ];
 
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
@@ -608,6 +613,15 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
   var series = loadSeries();
   data.starHistory = series;
 
+function domKnown() {
+    var s = { stars: data.stars };
+    document.querySelectorAll('.stat-num').forEach(function (el) {
+      var k = el.dataset.key;
+      var v = parseInt(el.dataset.count, 10);
+      if (k && !isNaN(v)) s[k] = v;
+    });
+    return s;
+  }
   function loadKnown() {
     try {
       var raw = localStorage.getItem(KNOWN_KEY);
@@ -616,7 +630,7 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
         if (o && o.stars != null) return o;
       }
     } catch (e) {}
-    return null;
+    return domKnown();
   }
   var known = loadKnown();
 
@@ -655,29 +669,36 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
     try { localStorage.setItem(KEY, JSON.stringify(series)); } catch (e) {}
   }
 
-function fetchJson(url) {
-    return fetch(url, { cache: 'no-store' });
+function fetchJson(path) {
+    var i = 0;
+    function attempt() {
+      if (i >= API_BASE.length) throw new Error('all bases failed');
+      var url = API_BASE[i++] + path;
+      return fetch(url, { cache: 'no-store' }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r;
+      }).catch(function () {
+        return attempt();
+      });
+    }
+    return attempt();
   }
 
   function refreshFull() {
     return Promise.all([
-      fetchJson('https://api.github.com/repos/' + REPO).then(function (r) {
-        if (!r.ok) throw new Error(r.status);
+      fetchJson('/repos/' + REPO).then(function (r) {
         return r.json();
       }),
-      fetchJson('https://api.github.com/repos/' + REPO + '/contributors?per_page=1').then(function (r) {
-        if (!r.ok) throw new Error(r.status);
+      fetchJson('/repos/' + REPO + '/contributors?per_page=1').then(function (r) {
         return { count: lastPage(r.headers.get('Link')) };
       }),
-      fetchJson('https://api.github.com/repos/' + REPO + '/releases?per_page=1').then(function (r) {
-        if (!r.ok) throw new Error(r.status);
+      fetchJson('/repos/' + REPO + '/releases?per_page=1').then(function (r) {
         return { count: lastPage(r.headers.get('Link')) };
       })
     ]);
   }
   function refreshCore() {
-    return fetchJson('https://api.github.com/repos/' + REPO).then(function (r) {
-      if (!r.ok) throw new Error(r.status);
+    return fetchJson('/repos/' + REPO).then(function (r) {
       return r.json();
     });
   }
@@ -719,4 +740,7 @@ refresh(true);
   setInterval(function () {
     if (document.visibilityState !== 'hidden') refresh(false);
   }, POLL_MS);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') refresh(false);
+  });
 })();
