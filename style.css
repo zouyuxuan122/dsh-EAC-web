@@ -636,6 +636,15 @@ html[data-cursor='light'] .cursor-ring.is-hover {
   color: var(--gray-4);
 }
 .chart-live strong { font-size: 20px; color: var(--ink); }
+.chart-live-at {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--gray-4);
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 999px;
+  padding: 3px 9px;
+  margin-left: 2px;
+}
 .live-dot {
   width: 8px; height: 8px;
   background: var(--ink);

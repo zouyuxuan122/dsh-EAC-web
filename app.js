@@ -553,7 +553,9 @@
 (function () {
   'use strict';
   var KEY = 'eacStarSeries_v1';
+  var KNOWN_KEY = 'eacKnownStats_v1';
   var REPO = 'zouyuxuan122/Deepseek-Harness-EAC';
+  var POLL_MS = 60000;
   var DEFAULT_SERIES = [
     { d: '08-14', s: 1 },
     { d: '08-15', s: 210 },
@@ -569,6 +571,10 @@
   function todayStr() {
     var now = new Date();
     return pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+  }
+  function timeStr() {
+    var now = new Date();
+    return pad(now.getHours()) + ':' + pad(now.getMinutes());
   }
   function loadSeries() {
     try {
@@ -595,6 +601,22 @@
   var series = loadSeries();
   data.starHistory = series;
 
+  function loadKnown() {
+    try {
+      var raw = localStorage.getItem(KNOWN_KEY);
+      if (raw) {
+        var o = JSON.parse(raw);
+        if (o && o.stars != null) return o;
+      }
+    } catch (e) {}
+    return null;
+  }
+  var known = loadKnown();
+
+  function saveKnown() {
+    try { localStorage.setItem(KNOWN_KEY, JSON.stringify(known)); } catch (e) {}
+  }
+
   function applyStats(s) {
     document.querySelectorAll('.stat-num').forEach(function (el) {
       var k = el.dataset.key;
@@ -603,40 +625,91 @@
     var live = document.getElementById('chart-live-num');
     if (live && s.stars != null) live.textContent = String(s.stars);
   }
+  function touchClock() {
+    var at = document.getElementById('chart-live-at');
+    if (at) at.textContent = '更新于 ' + timeStr();
+  }
   function reflow() {
     if (typeof window.__eacReflowStats === 'function') window.__eacReflowStats();
     if (typeof window.__eacChartDrawn === 'function' && window.__eacChartDrawn()) {
       window.dispatchEvent(new Event('resize'));
     }
   }
-
-  Promise.all([
-    fetch('https://api.github.com/repos/' + REPO, { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error('repo'); return r.json(); }),
-    fetch('https://api.github.com/repos/' + REPO + '/contributors?per_page=1', { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error('contrib'); return { count: lastPage(r.headers.get('Link')) }; }),
-    fetch('https://api.github.com/repos/' + REPO + '/releases?per_page=1', { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error('releases'); return { count: lastPage(r.headers.get('Link')) }; })
-  ]).then(function (res) {
-    var repo = res[0];
-    var stats = { stars: repo.stargazers_count, forks: repo.forks_count };
-    if (res[1].count != null) stats.contributors = res[1].count;
-    if (res[2].count != null) stats.releases = res[2].count;
-
-    data.stars = repo.stargazers_count;
+  function updateSeries(stars) {
+    data.stars = stars;
     var t = todayStr();
     var last = series[series.length - 1];
     if (last.d === t) {
-      last.s = repo.stargazers_count;
+      last.s = stars;
     } else {
       last.live = false;
-      series.push({ d: t, s: repo.stargazers_count, live: true });
+      series.push({ d: t, s: stars, live: true });
     }
     try { localStorage.setItem(KEY, JSON.stringify(series)); } catch (e) {}
+  }
 
+function fetchJson(url) {
+    return fetch(url, { cache: 'no-store' });
+  }
+
+  function refreshFull() {
+    return Promise.all([
+      fetchJson('https://api.github.com/repos/' + REPO).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      }),
+      fetchJson('https://api.github.com/repos/' + REPO + '/contributors?per_page=1').then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return { count: lastPage(r.headers.get('Link')) };
+      }),
+      fetchJson('https://api.github.com/repos/' + REPO + '/releases?per_page=1').then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return { count: lastPage(r.headers.get('Link')) };
+      })
+    ]);
+  }
+  function refreshCore() {
+    return fetchJson('https://api.github.com/repos/' + REPO).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    });
+  }
+
+  function apply(repo, extra) {
+    var stats = { stars: repo.stargazers_count, forks: repo.forks_count };
+    if (extra) {
+      if (extra.contributors != null) stats.contributors = extra.contributors;
+      if (extra.releases != null) stats.releases = extra.releases;
+    }
+    known = stats;
+    known.updatedAt = Date.now();
+    saveKnown();
+    updateSeries(stats.stars);
     applyStats(stats);
+    touchClock();
     reflow();
-  }).catch(function () {
-    applyStats({ stars: data.stars });
-  });
+  }
+
+  function fail() {
+    if (known && known.stars != null) {
+      applyStats(known);
+      data.stars = known.stars;
+    }
+  }
+
+function refresh(full) {
+    if (full) {
+      return refreshFull().then(function (res) {
+        apply(res[0], { contributors: res[1].count, releases: res[2].count });
+      }).catch(fail);
+    }
+    return refreshCore().then(function (repo) {
+      apply(repo, null);
+    }).catch(fail);
+  }
+
+refresh(true);
+  setInterval(function () {
+    if (document.visibilityState !== 'hidden') refresh(false);
+  }, POLL_MS);
 })();
