@@ -85,8 +85,11 @@
   var mouseX = -100, mouseY = -100;
   var ringX = -100, ringY = -100;
 
-  if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
+if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
+    document.documentElement.classList.add('custom-cursor');
+    var cursorMoved = false;
     document.addEventListener('mousemove', function (e) {
+      cursorMoved = true;
       mouseX = e.clientX;
       mouseY = e.clientY;
       dot.style.left = mouseX + 'px';
@@ -100,6 +103,10 @@
       ring.style.top = ringY + 'px';
       requestAnimationFrame(tickRing);
     })();
+
+    setTimeout(function () {
+      if (!cursorMoved) document.documentElement.classList.remove('custom-cursor');
+    }, 1500);
 
     var hoverables = 'a, button, .card, .feature, .contributor, .btn';
     document.addEventListener('mouseover', function (e) {
