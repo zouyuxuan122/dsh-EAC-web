@@ -537,9 +537,15 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
 
 /* ---------------- cursor color by background ---------------- */
 (function () {
-  var LIGHT_SECTIONS = ['curve', 'features', 'compare', 'versions'];
   var root = document.documentElement;
   var raf = null;
+
+  function luminance(c) {
+    var m = /^rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(c);
+    if (!m) return null;
+    return (0.2126 * (+m[1]) + 0.7152 * (+m[2]) + 0.0722 * (+m[3])) / 255;
+  }
+
   document.addEventListener('mousemove', function (e) {
     if (raf) return;
     raf = requestAnimationFrame(function () {
@@ -547,8 +553,11 @@ if (!REDUCED && window.matchMedia('(hover: hover)').matches) {
       var el = document.elementFromPoint(e.clientX, e.clientY);
       var light = false;
       while (el && el !== document.body) {
-        if (el.id && LIGHT_SECTIONS.indexOf(el.id) !== -1) { light = true; break; }
-        if (el.classList && el.classList.contains('section')) break;
+        var l = luminance(getComputedStyle(el).backgroundColor);
+        if (l !== null && l !== 0) {
+          light = l > 0.5;
+          break;
+        }
         el = el.parentElement;
       }
       root.dataset.cursor = light ? 'light' : 'dark';
