@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek Harness EAC · 揽尽万象</title>
+<meta name="description" content="DeepSeek Harness (dsh) Windows / Linux 桌面客户端 — 内置 Node.js 与 dsh CLI，一键启动，10 套内置 UI 皮肤。EAC: Embracing All Creation 揽尽万象。">
+<meta property="og:title" content="DeepSeek Harness EAC · 揽尽万象">
+<meta property="og:description" content="Embracing All Creation — DeepSeek Harness (dsh) 桌面客户端。内置 Node.js + dsh CLI，一键启动，10 套内置 UI 皮肤。">
+<meta property="og:url" content="https://github.com/zouyuxuan122/Deepseek-Harness-EAC">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img class="loader-mark" src="assets/icon.png" alt="D">
+    <div class="loader-track"><div class="loader-fill"></div></div>
+    <div class="loader-label">DEEPSEEK HARNESS EAC</div>
+  </div>
+</div>
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="nav-logo" href="#hero">
+    <span class="logo-box"><img class="logo-box-img" src="assets/icon.png" alt="D"></span>
+    <span class="logo-text">DSH<span class="logo-slash">/</span>EAC</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#curve">轨迹</a>
+    <a href="#interface">界面</a>
+    <a href="#about">介绍</a>
+    <a href="#features">特性</a>
+    <a href="#compare">对比</a>
+    <a href="#versions">迭代</a>
+    <a href="#downloads">下载</a>
+    <a href="#community">社区</a>
+  </nav>
+  <div class="nav-actions">
+    <a class="nav-bug" href="https://eac.dtyg123.dpdns.org/" target="_blank" rel="noopener">问题反馈 ↗</a>
+    <a class="nav-gh" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</header>
+
+<main>
+
+<section id="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <p class="hero-kicker reveal" data-delay="0">
+      <span class="kicker-dot"></span>
+      OPEN SOURCE · AI AGENT DESKTOP · 2026
+    </p>
+
+    <h1 class="hero-title">
+      <span class="title-line reveal" data-delay="1">
+        <span class="t-solid">DEEPSEEK</span>
+      </span>
+      <span class="title-line reveal" data-delay="2">
+        <span class="t-outline">HARNESS</span>
+      </span>
+      <span class="title-line reveal" data-delay="3">
+        <span class="t-solid t-small">EAC</span>
+        <span class="t-zh">揽尽万象</span>
+      </span>
+    </h1>
+
+    <div class="hero-body reveal" data-delay="4">
+      <p class="hero-desc">
+        DeepSeek Harness 官方桌面客户端 —— 内置 Node.js 与 dsh CLI，一键启动、即开即用。
+        10 套内置 UI 皮肤，插件市场、Skills 与 MCP 深度集成，Windows / Linux 双平台覆盖。
+      </p>
+      <p class="hero-en">EMBRACING ALL CREATION</p>
+    </div>
+
+    <div class="hero-cta reveal" data-delay="5">
+      <a class="btn btn-solid magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/tag/v4.4.1" target="_blank" rel="noopener">
+        立即下载
+        <span class="btn-arrow">↓</span>
+      </a>
+      <a class="btn btn-ghost magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC" target="_blank" rel="noopener">
+        查看仓库
+        <span class="btn-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="hero-stats reveal" data-delay="6">
+      <div class="stat">
+        <span class="stat-num" data-key="stars" data-count="1019" data-suffix="+">0</span>
+        <span class="stat-label">GitHub Stars</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-key="forks" data-count="32">0</span>
+        <span class="stat-label">Forks</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-key="contributors" data-count="9">0</span>
+        <span class="stat-label">Contributors</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-key="releases" data-count="4">0</span>
+        <span class="stat-label">Releases</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>SCROLL</span>
+    <span class="scroll-line"></span>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>EMBRACING ALL CREATION</span><i>✦</i>
+    <span>揽尽万象</span><i>✦</i>
+    <span>ONE-CLICK LAUNCH</span><i>✦</i>
+    <span>10 BUILT-IN UI SKINS</span><i>✦</i>
+    <span>BUNDLED NODE.JS + DSH CLI</span><i>✦</i>
+    <span>PLUGIN MARKET</span><i>✦</i>
+    <span>MCP · SKILLS · SANDBOX</span><i>✦</i>
+    <span>EMBRACING ALL CREATION</span><i>✦</i>
+    <span>揽尽万象</span><i>✦</i>
+    <span>ONE-CLICK LAUNCH</span><i>✦</i>
+    <span>10 BUILT-IN UI SKINS</span><i>✦</i>
+    <span>BUNDLED NODE.JS + DSH CLI</span><i>✦</i>
+    <span>PLUGIN MARKET</span><i>✦</i>
+    <span>MCP · SKILLS · SANDBOX</span><i>✦</i>
+  </div>
+</div>
+
+<section id="curve" class="section light">
+  <div class="section-head">
+    <span class="section-index">01</span>
+    <div>
+      <p class="section-kicker">THE TRAJECTORY</p>
+      <h2 class="section-title">星迹 <em>Star Curve</em></h2>
+    </div>
+    <p class="section-note">发布六日 · 破千星<br>每一颗星都在此留痕</p>
+  </div>
+
+  <div class="ghost-text" aria-hidden="true">EAC</div>
+
+  <div class="chart-wrap">
+    <div class="chart-top">
+      <div class="chart-legend">
+        <span class="legend-line"></span>
+        <span>累计 Stars（每日）</span>
+      </div>
+      <div class="chart-live">
+        <span class="live-dot"></span>
+        实时 <strong id="chart-live-num">1019</strong>
+      </div>
+    </div>
+    <canvas id="starChart"></canvas>
+    <div id="chartTip" class="chart-tip" hidden>
+      <span class="tip-date"></span>
+      <strong class="tip-val"></strong>
+    </div>
+  </div>
+</section>
+
+<section id="interface" class="section dark ui-showcase">
+  <div class="section-head">
+    <span class="section-index">02</span>
+    <div>
+      <p class="section-kicker">PRODUCT INTERFACE</p>
+      <h2 class="section-title">产品界面 <em>Desktop UI</em></h2>
+    </div>
+    <p class="section-note">macOS 风格无边框窗口<br>深色暗黑 · 高对比度</p>
+  </div>
+
+  <div class="desktop-stage">
+    <div class="desktop-glow" aria-hidden="true"></div>
+
+    <div class="desktop-frame reveal" data-delay="0">
+      <div class="ds-titlebar">
+        <div class="traffic-lights">
+          <span class="tl tl-red"></span>
+          <span class="tl tl-yellow"></span>
+          <span class="tl tl-green"></span>
+        </div>
+        <div class="ds-drag"></div>
+      </div>
+
+      <div class="ds-body">
+        <aside class="ds-sidebar">
+          <div class="ds-logo-row">
+            <img class="ds-logo-icon" src="assets/icon.png" alt="D">
+            <span class="ds-logo-text">deepseek</span>
+            <span class="ds-badge">HARNESS</span>
+          </div>
+
+          <button class="ds-new-chat">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            新会话
+          </button>
+
+          <div class="ds-ws-head">
+            <span class="ds-ws-title">工作区</span>
+            <div class="ds-ws-icons">
+              <button class="ds-icon-btn" title="搜索">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><line x1="16" y1="16" x2="20" y2="20"/></svg>
+              </button>
+              <button class="ds-icon-btn" title="列表视图">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+              </button>
+              <button class="ds-icon-btn" title="新建">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <ul class="ds-tree">
+            <li class="ds-item selected">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span class="ds-item-name">deepseek-harness-EAC</span>
+            </li>
+            <li class="ds-item ds-child">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span class="ds-item-name">local</span>
+            </li>
+            <li class="ds-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span class="ds-item-name">code</span>
+            </li>
+          </ul>
+
+          <div class="ds-foot">
+            <button class="ds-foot-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><circle cx="12" cy="12" r="3.1"/><path d="M12 10.3v1.9l1.3 1.1"/></svg>
+              <span>临时对话</span>
+            </button>
+            <button class="ds-foot-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>设置</span>
+            </button>
+          </div>
+        </aside>
+
+        <main class="ds-main">
+          <div class="ds-hero">
+            <img class="ds-hero-logo" src="assets/icon.png" alt="D">
+            <h3 class="ds-hero-title">探索未至之境 <span class="ds-pill">预览版</span></h3>
+          </div>
+
+          <div class="ds-selectors">
+            <button class="ds-select">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span>deepseek-harness-EAC</span>
+              <svg class="ds-chev" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <button class="ds-select">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="4 7 12 3 20 7 20 17 12 21 4 17z"/><polyline points="4 7 12 11 20 7"/><line x1="12" y1="11" x2="12" y2="21"/></svg>
+              <span>极简模式</span>
+              <svg class="ds-chev" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+
+          <div class="ds-composer">
+            <textarea class="ds-input" rows="1" placeholder="描述你想要构建的内容"></textarea>
+            <div class="ds-composer-row">
+              <button class="ds-plus" title="添加附件">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <button class="ds-perm">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/><polyline points="9 12 11 14 15 10"/></svg>
+                <span>Full access</span>
+                <svg class="ds-chev" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <span class="ds-grow"></span>
+              <button class="ds-model">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 4 14 11 14 10 22 20 9 13 9"/></svg>
+                <span>DeepSeek-V4-Flash Max</span>
+                <svg class="ds-chev" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <button class="ds-send" title="发送">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section dark about-sec">
+  <div class="about-grid-bg" aria-hidden="true"></div>
+  <div class="section-head">
+    <span class="section-index">03</span>
+    <div>
+      <p class="section-kicker">THE FULL PICTURE</p>
+      <h2 class="section-title">深入解读 <em>About</em></h2>
+    </div>
+    <p class="section-note">官方开源 agent harness<br>的桌面化完全体</p>
+  </div>
+
+  <div class="about-lead reveal" data-delay="0">
+    <p>
+      <strong>DeepSeek Harness EAC（揽尽万象）</strong> 是 DeepSeek AI 官方开源的 agent harness ——
+      <strong>dsh</strong>（DeepSeek Harness）的桌面客户端封装。
+      它将完整的 <code>@deepseek-ai/dsh</code> 及其全部插件打包进一个开箱即用的桌面应用：
+      免安装 Node.js、双击即用、离线可用，同时保留 dsh 的全部能力 —— 子代理、工具注册表、
+      沙箱隔离、会话日志、Skills、MCP 与插件市场，一切皆插件，处处可替换。
+    </p>
+    <p>
+      外壳由 Electron 承载：自绘无边框玻璃栏、系统托盘常驻、会话完成通知、余额小部件、
+      文件变更追踪与还原、会话内终端、HTML 与端口预览；底层 dsh 引擎通过内置运行时在
+      本机回环地址运行，不对外暴露任何端口。
+    </p>
+  </div>
+
+  <div class="about-facts">
+    <div class="fact reveal" data-delay="0">
+      <span class="fact-num">01</span>
+      <h3>免安装 Node 运行时</h3>
+      <p>内置独立 node.exe 与 npm CLI，目标机器零环境依赖；预编译原生模块 ABI 与内置运行时严格一致，开箱即用。</p>
+    </div>
+    <div class="fact reveal" data-delay="1">
+      <span class="fact-num">02</span>
+      <h3>完整内置 dsh 引擎</h3>
+      <p>打包 @deepseek-ai/dsh 全量插件：子代理、工具执行管线、沙箱与审批策略、会话日志、Skills 与 MCP，离线可用。</p>
+    </div>
+    <div class="fact reveal" data-delay="2">
+      <span class="fact-num">03</span>
+      <h3>一键启动 · 自动端口</h3>
+      <p>双击即启动 dsh web，由系统分配空闲端口，仅绑定 127.0.0.1 回环；原生窗口加载 Web UI，不对外暴露服务。</p>
+    </div>
+    <div class="fact reveal" data-delay="3">
+      <span class="fact-num">04</span>
+      <h3>双通道自动更新</h3>
+      <p>官方 dsh 更新走 staging 目录 + overlay 原子切换，失败一键回退；客户端自更新走 GitHub / Gitee 双源，分片自动合并。</p>
+    </div>
+    <div class="fact reveal" data-delay="4">
+      <span class="fact-num">05</span>
+      <h3>文件变更追踪与还原</h3>
+      <p>聚合会话内全部文件改动，行级 diff 展示新建 / 修改 / 删除；逐文件或全部还原，内容精确匹配，冲突时绝不覆盖。</p>
+    </div>
+    <div class="fact reveal" data-delay="5">
+      <span class="fact-num">06</span>
+      <h3>会话内终端</h3>
+      <p>在会话项目目录启动持久 PowerShell，SSE 流式输出、命令历史、断线自动重连，切换标签页与刷新不丢输出。</p>
+    </div>
+    <div class="fact reveal" data-delay="6">
+      <span class="fact-num">07</span>
+      <h3>HTML / 端口预览</h3>
+      <p>站内侧边预览面板：会话生成的 HTML 页面实时预览，本地回环端口一键探测并加载，无需离开应用。</p>
+    </div>
+    <div class="fact reveal" data-delay="7">
+      <span class="fact-num">08</span>
+      <h3>深度系统集成</h3>
+      <p>托盘常驻、任务完成系统通知、DeepSeek 余额小部件、快捷方式自动维护、退出即清理进程树，不留孤儿进程。</p>
+    </div>
+  </div>
+
+  <div class="about-flow reveal" data-delay="0">
+    <div class="flow-node">
+      <b>Electron 壳</b>
+      <span>窗口 · 托盘 · 更新 · 通知</span>
+    </div>
+    <span class="flow-arrow" aria-hidden="true">→</span>
+    <div class="flow-node">
+      <b>内置 node + dsh</b>
+      <span>overlay 优先 · 离线可用</span>
+    </div>
+    <span class="flow-arrow" aria-hidden="true">→</span>
+    <div class="flow-node">
+      <b>dsh web</b>
+      <span>127.0.0.1 回环 · 自动端口</span>
+    </div>
+    <span class="flow-arrow" aria-hidden="true">→</span>
+    <div class="flow-node">
+      <b>原生窗口</b>
+      <span>Web UI · 无边框玻璃栏</span>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="section light">
+  <div class="section-head">
+    <span class="section-index">04</span>
+    <div>
+      <p class="section-kicker">WHY IT SHINES</p>
+      <h2 class="section-title">特性 <em>Capabilities</em></h2>
+    </div>
+    <p class="section-note">为深度用户而生的<br>全栈 AI 开发台</p>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature reveal" data-delay="0">
+      <span class="feature-num">F/01</span>
+      <h3>一键启动</h3>
+      <p>内置独立 Node.js 运行时与 dsh CLI，免配置环境，双击即用。启动时自动挑选空闲端口并仅绑定本机回环，退出时整树回收进程，不留孤儿。</p>
+    </div>
+    <div class="feature reveal" data-delay="1">
+      <span class="feature-num">F/02</span>
+      <h3>10 套 UI 皮肤</h3>
+      <p>内置十套视觉主题，深浅自由切换。Web UI 由官方 dsh 引擎驱动，界面能力与官方迭代同步，让工作台贴合你的审美。</p>
+    </div>
+    <div class="feature reveal" data-delay="2">
+      <span class="feature-num">F/03</span>
+      <h3>插件市场</h3>
+      <p>基于 dsh-plugin 开放生态，能力随装随用、按需扩展。配套插件（余额小部件、文件变更投影等）随客户端自动同步进 web profile，幂等注册。</p>
+    </div>
+    <div class="feature reveal" data-delay="3">
+      <span class="feature-num">F/04</span>
+      <h3>Skills + MCP</h3>
+      <p>Skills 目录一键直达，MCP 工具协议深度集成。工具调用走受管执行管线：沙箱约束、审批策略、行级变更记录，Agent 能力无限外延且全程可审计。</p>
+    </div>
+    <div class="feature reveal" data-delay="4">
+      <span class="feature-num">F/05</span>
+      <h3>更新即保障</h3>
+      <p>更新前四目录备份、失败自动回滚，更新中断不丢数据。内置结构化日志 + PII 三层脱敏 + 一键诊断包，报障不再需要手动翻日志。</p>
+    </div>
+    <div class="feature reveal" data-delay="5">
+      <span class="feature-num">F/06</span>
+      <h3>双平台覆盖</h3>
+      <p>Windows 安装版 / 便携版（数据随 exe 携带，拷 U 盘即用），Linux 覆盖 deb / rpm / pacman / AppImage 全系包格式，CI 自动构建发布。</p>
+    </div>
+    <div class="feature feature-wide reveal" data-delay="6">
+      <span class="feature-num">F/07 · RAPID</span>
+      <h3>快速版本迭代</h3>
+      <p>自 2026-08-14 首发以来 7 天连发 22 个版本：Windows / Linux 双线并进，安装器、更新器、内核与 UI 修复几乎每日滚动发布。迭代快而不险——每次更新前自动备份、失败即回滚，结构如下方「版本迭代」时间线。</p>
+      <a class="feature-go" href="#versions">看时间线 →</a>
+    </div>
+  </div>
+</section>
+
+<section id="compare" class="section light compare-sec">
+  <div class="section-head">
+    <span class="section-index">05</span>
+    <div>
+      <p class="section-kicker">SIDE BY SIDE</p>
+      <h2 class="section-title">同类对比 <em>Comparison</em></h2>
+    </div>
+    <p class="section-note">与网页版、通用桌面客户端<br>及终端 Agent 的横向对照</p>
+  </div>
+
+  <p class="compare-lead reveal" data-delay="0">
+    它不是又一款聊天客户端，也不是又一个 CLI 工具 —— 它是<strong>「开箱即用的桌面应用」</strong>与
+    <strong>「完整开放的 agent harness」</strong>的结合体：既像桌面软件一样免环境、双击即用，
+    又保留了 dsh 的子代理、沙箱、工具注册表与一切皆插件架构的深度。
+  </p>
+
+  <div class="table-scroll reveal" data-delay="1">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>能力维度</th>
+          <th class="hl">DeepSeek Harness EAC</th>
+          <th>官方网页版 / CLI</th>
+          <th>通用桌面客户端<br><small>Cherry Studio / Chatbox 等</small></th>
+          <th>终端 Agent<br><small>OpenCode / Claude Code 等</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>产品形态</td>
+          <td class="hl">桌面壳 + 完整 Web UI</td>
+          <td>浏览器 / 终端命令</td>
+          <td>聊天为主的桌面应用</td>
+          <td>终端 TUI</td>
+        </tr>
+        <tr>
+          <td>环境依赖</td>
+          <td class="hl">内置 Node，免安装零配置</td>
+          <td>需自行安装 Node 环境</td>
+          <td>开箱即用，但不可扩展</td>
+          <td>需 Node 环境</td>
+        </tr>
+        <tr>
+          <td>Agent 深度</td>
+          <td class="hl">完整 dsh：子代理 · 沙箱 · 工具注册表 · 会话日志</td>
+          <td>完整（CLI 需自配环境）</td>
+          <td>弱：对话、知识库、RAG</td>
+          <td>强：文件 / 终端 / Git 操作</td>
+        </tr>
+        <tr>
+          <td>架构开放性</td>
+          <td class="hl">一切皆插件（Cordis），全可替换</td>
+          <td>同左</td>
+          <td>封闭插件商店</td>
+          <td>各家生态，中等开放</td>
+        </tr>
+        <tr>
+          <td>更新机制</td>
+          <td class="hl">双通道自动更新 + 备份回滚</td>
+          <td>手动升级</td>
+          <td>各家内置更新</td>
+          <td>各家内置更新</td>
+        </tr>
+        <tr>
+          <td>文件追踪与还原</td>
+          <td class="hl">会话内行级 diff + 一键还原</td>
+          <td>无</td>
+          <td>无</td>
+          <td>Git 层面，需自建</td>
+        </tr>
+        <tr>
+          <td>会话内终端 / 预览</td>
+          <td class="hl">内置终端 + HTML / 端口预览</td>
+          <td>无</td>
+          <td>无</td>
+          <td>终端即本体</td>
+        </tr>
+        <tr>
+          <td>系统集成</td>
+          <td class="hl">托盘 · 系统通知 · 余额小部件</td>
+          <td>无</td>
+          <td>通知较弱</td>
+          <td>无</td>
+        </tr>
+        <tr>
+          <td>便携与离线</td>
+          <td class="hl">便携版拷 U 盘即用，离线可用</td>
+          <td>需环境</td>
+          <td>部分有便携版</td>
+          <td>需环境</td>
+        </tr>
+        <tr>
+          <td>插件生态</td>
+          <td class="hl">dsh-plugin 生态 + 内置插件市场</td>
+          <td>同左</td>
+          <td>各家封闭商店</td>
+          <td>各家市场，深度不一</td>
+        </tr>
+        <tr>
+          <td>适合人群</td>
+          <td class="hl">DeepSeek 重度用户 · Agent 开发调试 · 全栈 AI 工作流</td>
+          <td>已有 Node 环境的开发者</td>
+          <td>轻量对话、普通用户</td>
+          <td>命令行开发者</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="compare-foot reveal" data-delay="2">
+    一句话总结：<strong>想要聊天体验 → 通用客户端；想要终端效率 → 终端 Agent；想要「完整 agent 能力 + 桌面级开箱即用」→ 选 DeepSeek Harness EAC。</strong>
+  </p>
+</section>
+
+<section id="versions" class="section light ver-sec">
+  <div class="section-head">
+    <span class="section-index">06</span>
+    <div>
+      <p class="section-kicker">SHIPPING FAST</p>
+      <h2 class="section-title">版本迭代 <em>Releases</em></h2>
+    </div>
+    <p class="section-note">7 天 22 个版本<br>Windows / Linux 双线并进</p>
+  </div>
+
+  <p class="ver-lead reveal" data-delay="0">
+    自 <strong>2026-08-14</strong> 首发以来几乎每日一更：安装器、更新器、内核与 UI 修复持续滚动发布，
+    每一次更新都带 <strong>备份 + 自动回滚</strong> 保障，迭代快而不险。以下为 GitHub Releases 全部里程碑。
+  </p>
+
+  <ol class="timeline reveal" data-delay="1">
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v1.0.0</span>
+      <div class="tl-card reveal" data-delay="0">
+        <div class="tl-head">
+          <b>首发版本</b>
+          <span class="tl-date">08-14</span>
+          <span class="tl-chip win">WIN</span>
+        </div>
+        <p>将官方 dsh 打包为开箱即用 Windows 客户端：免装 Node、无边框窗口与托盘、10 套 UI 皮肤、文件变更追踪与一键还原、会话内终端、插件市场、Skills + MCP 迁移、双源自动更新。</p>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v2.0.0</span>
+      <div class="tl-card reveal" data-delay="1">
+        <div class="tl-head">
+          <b>生态初建</b>
+          <span class="tl-date">08-15</span>
+          <span class="tl-chip win">WIN</span>
+        </div>
+        <p>内置插件市场 dsh-webui-market（一键安装 / 卸载插件）、工具视觉模型 dsh-tool-vision、长期记忆组件，功能外延正式起步。</p>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v2.0.2</span>
+      <div class="tl-card reveal" data-delay="2">
+        <div class="tl-head">
+          <b>更新网络栈重写</b>
+          <span class="tl-date">08-15</span>
+          <span class="tl-chip win">WIN</span>
+        </div>
+        <p>自动更新改走系统代理与 CA 证书，支持断点续传，175MB 大安装包不再因网络中断而失败。</p>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v2.0.4</span>
+      <div class="tl-card reveal" data-delay="3">
+        <div class="tl-head">
+          <b>断线自动重连</b>
+          <span class="tl-date">08-15</span>
+          <span class="tl-chip win">WIN</span>
+        </div>
+        <p>HTTP Range 续传 + 指数退避重试，ERR_CONNECTION_RESET 后从断点继续下载，直连 GitHub 也不再慌。</p>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v3.0.0</span>
+      <div class="tl-card reveal" data-delay="4">
+        <div class="tl-head">
+          <b>更新路径重写</b>
+          <span class="tl-date">08-16</span>
+          <span class="tl-chip win">WIN</span>
+        </div>
+        <p>更新器自恢复、右侧栏、端口预览；同日 v3.0.1 重构安装器流程并新增历史节点。</p>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v3.0.1</span>
+      <div class="tl-card reveal" data-delay="5">
+        <div class="tl-head">
+          <b>安装器重构 + Linux 首版</b>
+          <span class="tl-date">08-16</span>
+          <span class="tl-chip linux">LINUX</span>
+        </div>
+        <p>全新安装器流程、历史节点；v3.0.1-linux 覆盖 Arch 等发行版，双平台格局成形。</p>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v4.0.0</span>
+      <div class="tl-card reveal" data-delay="6">
+        <div class="tl-head">
+          <b>稳定性大修</b>
+          <span class="tl-date">08-17</span>
+          <span class="tl-chip win">WIN</span>
+        </div>
+        <p>退出进程树等待 killTreeAndWait、安装包 SHA-256 校验、企微 ClawBot 接入、多账户与会话删除。</p>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v4.1</span>
+      <div class="tl-card reveal" data-delay="7">
+        <div class="tl-head">
+          <b>流式修复</b>
+          <span class="tl-date">08-17</span>
+          <span class="tl-chip linux">LINUX</span>
+        </div>
+        <p>llm/stream 异步生成器崩溃修复、updater 挂起修复、设置导航修复；Linux 平台同步跟进 v4.0.2 / v4.1.0。</p>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v4.4</span>
+      <div class="tl-card reveal" data-delay="8">
+        <div class="tl-head">
+          <b>备份回滚机制</b>
+          <span class="tl-date">08-19</span>
+          <span class="tl-chip lite">LITE</span>
+        </div>
+        <p>更新前 4 目录备份、失败自动回滚；Skills 目录修复；结构化日志 + PII 脱敏；同日发布 v4.4-lite 精简版（余额小部件、低谷价格提醒）。</p>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <span class="tl-tag">v4.4.1</span>
+      <div class="tl-card reveal" data-delay="9">
+        <div class="tl-head">
+          <b>最新版</b>
+          <span class="tl-date">08-20</span>
+          <span class="tl-chip win">WIN</span>
+        </div>
+        <p>当前最新 Windows 版本：安装版 + 便携版，配套 SHA256SUMS 校验。迭代仍在继续，下一站已在路上。</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section id="downloads" class="section dark">
+  <div class="section-head">
+    <span class="section-index">07</span>
+    <div>
+      <p class="section-kicker">GET THE CLIENT</p>
+      <h2 class="section-title">版本 <em>Editions</em></h2>
+    </div>
+    <p class="section-note">Windows / Linux<br>安装版 · 便携版 · 轻量版</p>
+  </div>
+
+  <div class="cards">
+
+    <article class="card reveal" data-delay="0">
+      <div class="card-tag">v4Lite · 轻量</div>
+      <h3 class="card-name">LITE <span>轻装版</span></h3>
+      <p class="card-desc">极致精简的轻量客户端，去掉冗余组件，启动更快、占用更低，核心功能完整保留。</p>
+      <ul class="card-points">
+        <li>更小的安装体积</li>
+        <li>更快的冷启动速度</li>
+        <li>完整核心会话能力</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn btn-solid btn-sm magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/download/v4.4-lite/Deepseek-Harness-EAC-Setup-x64.exe" target="_blank" rel="noopener">Setup 安装版 ↓</a>
+        <a class="btn btn-ghost btn-sm magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/tag/v4.4-lite" target="_blank" rel="noopener">Release 页面 ↗</a>
+      </div>
+    </article>
+
+    <article class="card card-focus reveal" data-delay="1">
+      <div class="card-tag">★ 推荐 · Windows 标准版</div>
+      <h3 class="card-name">WINDOWS <span>标准版</span></h3>
+      <p class="card-desc">官方 Windows x64 桌面客户端，内置 Node.js + dsh CLI，一键启动，自动更新与失败回滚。</p>
+      <ul class="card-points">
+        <li>更新前自动备份 · 失败回滚</li>
+        <li>内置结构化日志与诊断包</li>
+        <li>SHA-256 完整性校验</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn btn-solid btn-sm magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/download/v4.4.1/Deepseek-Harness-EAC-Setup-v4.4.1-x64.exe" target="_blank" rel="noopener">Setup 安装版 ↓</a>
+        <a class="btn btn-ghost btn-sm magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/download/v4.4.1/Deepseek-Harness-EAC-Portable-v4.4.1-x64.exe" target="_blank" rel="noopener">Portable 便携版 ↓</a>
+        <a class="btn btn-ghost btn-sm magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/tag/v4.4.1" target="_blank" rel="noopener">Release 页面 ↗</a>
+      </div>
+    </article>
+
+    <article class="card reveal" data-delay="2">
+      <div class="card-tag">v4.4.0 · Linux</div>
+      <h3 class="card-name">LINUX <span>多发行版</span></h3>
+      <p class="card-desc">为 Linux 生态打包的官方版本，覆盖主流发行版包格式，CI 自动构建发布。</p>
+      <ul class="card-points">
+        <li>Debian / Ubuntu — .deb</li>
+        <li>Fedora / RHEL — .rpm</li>
+        <li>Arch — .pacman · 通用 — AppImage</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn btn-solid btn-sm magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/download/v4.4.0-linux/Deepseek-Harness-EAC-4.4.0-amd64.deb" target="_blank" rel="noopener">.deb ↓</a>
+        <a class="btn btn-ghost btn-sm magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/download/v4.4.0-linux/Deepseek-Harness-EAC-4.4.0.x86_64.rpm" target="_blank" rel="noopener">.rpm ↓</a>
+        <a class="btn btn-ghost btn-sm magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/download/v4.4.0-linux/Deepseek-Harness-EAC-4.4.0-x64.pacman" target="_blank" rel="noopener">.pacman ↓</a>
+        <a class="btn btn-ghost btn-sm magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases/download/v4.4.0-linux/Deepseek-Harness-EAC-4.4.0-x86_64.AppImage" target="_blank" rel="noopener">AppImage ↓</a>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="downloads-foot">
+    所有发布产物均附 <code>SHA256SUMS.txt</code> 校验文件 ·
+    <a href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases" target="_blank" rel="noopener">查看全部 Releases ↗</a>
+  </p>
+</section>
+
+<section id="community" class="section dark">
+  <div class="section-head">
+    <span class="section-index">08</span>
+    <div>
+      <p class="section-kicker">BUILT TOGETHER</p>
+      <h2 class="section-title">贡献者 <em>Contributors</em></h2>
+    </div>
+    <p class="section-note">来自社区的每一行代码<br>都让万象更完整</p>
+  </div>
+
+  <div class="contributors" id="contributors"></div>
+
+  <div class="community-cta reveal">
+    <h3>让这个仓库，拥有你的那颗星。</h3>
+    <div class="hero-cta">
+      <a class="btn btn-solid magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC" target="_blank" rel="noopener">
+        Star us on GitHub
+        <span class="btn-arrow">★</span>
+      </a>
+      <a class="btn btn-ghost magnetic" href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/fork" target="_blank" rel="noopener">
+        Fork &amp; Contribute
+        <span class="btn-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <a class="nav-logo" href="#hero">
+<span class="logo-box"><img class="logo-box-img" src="assets/icon.png" alt="D"></span>
+      <span class="logo-text">DSH<span class="logo-slash">/</span>EAC</span>
+    </a>
+    <p class="footer-tag">EMBRACING ALL CREATION · 揽尽万象</p>
+    <div class="footer-links">
+      <a href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC" target="_blank" rel="noopener">仓库</a>
+      <a href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/releases" target="_blank" rel="noopener">Releases</a>
+      <a href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/issues" target="_blank" rel="noopener">Issues</a>
+      <a href="https://github.com/zouyuxuan122/Deepseek-Harness-EAC/graphs/contributors" target="_blank" rel="noopener">Contributors</a>
+    </div>
+    <p class="footer-note">© 2026 DeepSeek Harness EAC · Open Source Project</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
