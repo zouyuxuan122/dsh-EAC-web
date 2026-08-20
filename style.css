@@ -468,7 +468,7 @@ html[data-cursor='light'] .cursor-ring.is-hover {
   opacity: 0;
   transform: translateY(54px);
   transition: opacity 1s var(--ease-out), transform 1.1s var(--ease-out);
-  transition-delay: calc(var(--d, 0) * 0.12s);
+  transition-delay: calc(var(--d, 0) * 0.06s);
   will-change: opacity, transform;
 }
 .reveal.in { opacity: 1; transform: translateY(0); }
@@ -1862,7 +1862,7 @@ width: 100%;
 }
 .tl-card.reveal {
   transition: opacity 0.9s var(--ease-back), transform 0.9s var(--ease-back), box-shadow 0.5s var(--ease-out);
-  transition-delay: calc(var(--d, 0) * 0.12s);
+  transition-delay: calc(var(--d, 0) * 0.06s);
 }
 .tl-item:nth-child(odd) .tl-card.reveal { transform: translateY(60px) rotate(-3.5deg); }
 .tl-item:nth-child(even) .tl-card.reveal { transform: translateY(60px) rotate(3.5deg); }

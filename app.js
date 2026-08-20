@@ -180,7 +180,7 @@ var io = new IntersectionObserver(function (entries) {
         clearTimeout(el._outT);
         el.classList.remove('out');
         el.classList.add('in');
-      } else if (cur < prev && !el.closest('#hero, #versions')) {
+      } else if (cur < prev) {
         clearTimeout(el._outT);
         el._outT = setTimeout(function () {
           el.classList.add('out');
@@ -189,7 +189,7 @@ var io = new IntersectionObserver(function (entries) {
       }
       el._ratio = cur;
     });
-  }, { threshold: [0.14, 0.5, 0.8] });
+  }, { threshold: [0.05, 0.5, 0.8] });
   reveals.forEach(function (el) { io.observe(el); });
 
   /* ---------------- count-up stats ---------------- */
