@@ -180,7 +180,7 @@ var io = new IntersectionObserver(function (entries) {
         clearTimeout(el._outT);
         el.classList.remove('out');
         el.classList.add('in');
-      } else if (cur < prev) {
+      } else if (cur < prev && !el.closest('#hero, #versions')) {
         clearTimeout(el._outT);
         el._outT = setTimeout(function () {
           el.classList.add('out');
